@@ -1,7 +1,7 @@
-#
+"""
 Image processing script to measure a series of point-rois in two channels
 Supposed to be run under Fiji using the Jython interpreter
-#
+"""
 from ij import IJ
 from ij import *
 from ij import ImagePlus
