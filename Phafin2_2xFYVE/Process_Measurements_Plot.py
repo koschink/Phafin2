@@ -6,7 +6,7 @@ Created on Tue Jan 20 13:42:59 2015
 """
 
 from __future__ import division
-
+from __future__ import print_function
 from pandas import *
 import pandas as pd
 from math import *
@@ -21,11 +21,11 @@ sec_per_frame = 5
 
 datapath = os.path.dirname(__file__)
 dir_name = os.path.basename(datapath)
-print dir_name
-print datapath
+print(dir_name)
+print(datapath)
 splits = dir_name.split('_')
-print splits[0]
-print splits[1]
+print(splits[0])
+print(splits[1])
 savepath = datapath + "/Measurements"
 
 
@@ -35,7 +35,7 @@ files = glob.glob(savepath+"/*.csv")
 
 #files = files[1:29]
 
-print files
+print(files)
 
 f = lambda x: ((x-x.min())/(x.max()-x.min())*100)
 f2 = lambda x: (x/x.max()*100)
@@ -82,14 +82,14 @@ df5 = df3.copy()
 #shifting_Matrix = [4,11,9,9,10,6,15,]
 shifting_matrix = df5[:15].idxmax().tolist()
 
-print shifting_matrix
+print(shifting_matrix)
 #shifting_matrix[:] = [5 - x for x in shifting_matrix]
 #print shifting_matrix
 headings = range(1, (len(shifting_matrix)+1))
 df5.columns = headings
 for position, movement in enumerate(shifting_matrix):
-    print position 
-    print movement
+    print(position) 
+    print(movement)
     df5.iloc[:, position] = df5.iloc[:,position].shift(5-movement)
 tracklength = df5.count() - df5[:10].idxmax()
 
@@ -102,8 +102,8 @@ headings = range(1, (len(shifting_matrix)+1))
 df6.columns = headings
 
 for position, movement in enumerate(shifting_matrix):
-    print position 
-    print movement
+    print(position) 
+    print(movement)
     df6.iloc[:, position] = df6.iloc[:,position].shift(5-movement)
 #
 #
@@ -176,14 +176,15 @@ df6[:40].apply(normalisation).plot(legend = False, color="red")#c=sns.color_pale
 save_plot = datapath + "/Plots/plot3.png"
 plt.savefig(save_plot)
 
-print "Analysed tracks: " + str(len(df6.columns))
+print("Analysed tracks: " + str(len(df6.columns)))
 
 save_excel = datapath +"/excel/" + splits[0]+ ".xls"
-print save_excel
+print(save_excel)
 df5[:40].apply(normalisation).to_excel(save_excel)
 save_excel = datapath +"/excel/" + splits[1]+ ".xls"
-print save_excel
+print(save_excel)
 df6[:40].apply(normalisation).to_excel(save_excel)
 save_excel = datapath +"/excel/tracklength.xls"
 tracklength.to_frame().to_excel(save_excel)
+
 
