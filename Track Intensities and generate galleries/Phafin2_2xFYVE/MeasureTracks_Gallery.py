@@ -41,7 +41,7 @@ threecolour = False
 
 #dataname = "P2_Measurements"
 
-savepath = "D:/Kay/Dropbox/Phafin2/Phafin2_Localisations/SidMFYVE_FYVE"
+savepath = "D:\Kay/Dropbox/Phafin2/Phafin2_Localisations/Phafin2_Phuji/"
 
 
 def normList2(L, normalizeTo=100):
